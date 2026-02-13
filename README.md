@@ -20,25 +20,12 @@ M.Hari Prasad(25013933)
 import pandas as pd
 import numpy as np
 
-# -----------------------------
-# Load dataset
-# -----------------------------
+
 data = pd.read_csv(r"C:\Users\acer\Downloads\Placement_Data.csv")
-
-# Copy dataframe
 data1 = data.copy()
-
-# -----------------------------
-# Drop unwanted columns
-# -----------------------------
 data1 = data1.drop(['sl_no', 'salary'], axis=1)
-
-# -----------------------------
-# Label Encoding
-# -----------------------------
 from sklearn.preprocessing import LabelEncoder
 le = LabelEncoder()
-
 data1["gender"] = le.fit_transform(data1["gender"])
 data1["ssc_b"] = le.fit_transform(data1["ssc_b"])
 data1["hsc_b"] = le.fit_transform(data1["hsc_b"])
@@ -48,9 +35,7 @@ data1["workex"] = le.fit_transform(data1["workex"])
 data1["specialisation"] = le.fit_transform(data1["specialisation"])
 data1["status"] = le.fit_transform(data1["status"])
 
-# -----------------------------
-# Split X and y
-# -----------------------------
+
 X = data1.iloc[:, :-1].values
 y = data1["status"].values
 
